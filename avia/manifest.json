@@ -1,0 +1,17 @@
+{
+  "name": "avia",
+  "id": "000000000000000000",
+  "api": "1.0.0",
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+  "main": "code.js",
+  "ui": "ui.html",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "menu": [
+    { "name": "Create Note", "command": "create-note" },
+    { "name": "Настройки аннотации…", "command": "annotation-settings" },
+    { "name": "Create Flow", "command": "create-flow" }
+  ]
+}

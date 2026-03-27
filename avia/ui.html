@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font: 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        padding: 12px;
+        color: var(--figma-color-text);
+        background: var(--figma-color-bg);
+      }
+      h2 {
+        font-size: 11px;
+        font-weight: 600;
+        margin: 0 0 10px;
+        color: var(--figma-color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 0;
+        cursor: pointer;
+      }
+      input[type="radio"] {
+        margin: 0;
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+        margin-top: 14px;
+        padding-top: 8px;
+        border-top: 1px solid var(--figma-color-border);
+      }
+      button {
+        font: inherit;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--figma-color-border);
+        background: var(--figma-color-bg-secondary);
+        color: var(--figma-color-text);
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--figma-color-bg-brand);
+        color: var(--figma-color-text-onbrand);
+        border-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Позиция аннотации</h2>
+    <label
+      ><input type="radio" name="side" value="below" /> Снизу (по умолчанию)</label
+    >
+    <label><input type="radio" name="side" value="above" /> Сверху</label>
+    <label><input type="radio" name="side" value="right" /> Справа</label>
+    <label><input type="radio" name="side" value="left" /> Слева</label>
+
+    <div class="actions">
+      <button type="button" id="cancel">Отмена</button>
+      <button type="button" class="primary" id="save">Сохранить</button>
+    </div>
+
+    <script>
+      const inputs = /** @type {NodeListOf<HTMLInputElement>} */ (
+        document.querySelectorAll('input[name="side"]')
+      );
+
+      window.onmessage = (event) => {
+        const msg = event.data.pluginMessage;
+        if (msg && msg.type === "init" && msg.side) {
+          for (const el of inputs) {
+            el.checked = el.value === msg.side;
+          }
+        }
+      };
+
+      document.getElementById("save").onclick = () => {
+        let side = "below";
+        for (const el of inputs) {
+          if (el.checked) side = el.value;
+        }
+        parent.postMessage({ pluginMessage: { type: "save", side } }, "*");
+      };
+
+      document.getElementById("cancel").onclick = () => {
+        parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+      };
+    </script>
+  </body>
+</html>

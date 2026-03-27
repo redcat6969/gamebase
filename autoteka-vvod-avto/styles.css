@@ -1,0 +1,377 @@
+/* Макет: Figma «Ввод авто» (375pt) — сверка с node 147:27757 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: #e5e5e5;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --bg-page: #ffffff;
+  --bg-hero: #f2f1f0;
+  --text-primary: #000000;
+  --text-secondary: #757575;
+  --btn-primary-bg: #141414;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #f2f1f0;
+  --btn-secondary-text: #000000;
+  --radius-tl: 28px;
+  --radius-tr: 28px;
+  --radius-br: 28px;
+  --radius-bl: 30px;
+  --radius-btn: 16px;
+  --hero-bg-height: 340px;
+  --shadow-floating: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 30px rgba(0, 0, 0, 0.12);
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  max-width: 375px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--bg-page);
+  border-radius: var(--radius-tl) var(--radius-tr) var(--radius-br) var(--radius-bl);
+  overflow: hidden;
+  box-shadow: var(--shadow-floating);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Серый фон ровно 340px — как отдельный слой в Figma */
+.screen__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--hero-bg-height);
+  background: var(--bg-hero);
+  border-radius: var(--radius-tl) var(--radius-tr) 28px 28px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--hero-bg-height);
+  background: transparent;
+}
+
+.hero-panel__header {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.status-bar {
+  position: relative;
+  height: 44px;
+  padding: 14px 11px 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+}
+
+.status-bar__time {
+  position: absolute;
+  left: 40px;
+  transform: translateX(-50%);
+  top: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.24px;
+  color: var(--text-primary);
+}
+
+/* Геолокация слева, 62px — как в макете */
+.status-bar__location {
+  position: absolute;
+  left: 62px;
+  top: 16px;
+  display: block;
+}
+
+.status-bar__icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Позиции от правого края экрана — как в макете iOS */
+.status-bar__signal,
+.status-bar__wifi,
+.status-bar__battery {
+  position: absolute;
+  top: 16px;
+  display: block;
+}
+
+.status-bar__signal {
+  right: 62px;
+}
+
+.status-bar__wifi {
+  right: 45px;
+}
+
+.status-bar__battery {
+  right: 11px;
+}
+
+.nav-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  min-height: 52px;
+  padding: 6px;
+}
+
+.nav-bar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.nav-bar__btn--back {
+  justify-self: start;
+}
+
+.nav-bar__btn--back img {
+  transform: scaleX(-1);
+}
+
+.nav-bar__btn img {
+  display: block;
+}
+
+.nav-bar__center {
+  min-height: 1px;
+}
+
+.nav-bar__right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+}
+
+.hero-card {
+  padding: 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero-card__inner {
+  text-align: center;
+}
+
+.hero-card__logo {
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.hero-card__title {
+  margin: 0 0 4px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
+  color: var(--text-primary);
+}
+
+.hero-card__subtitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.hero-card__spacer {
+  height: 32px;
+}
+
+.hero-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 24px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 15px 15px 17px;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn--primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.btn--secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+
+.btn--full {
+  max-width: 508px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  background: var(--bg-page);
+}
+
+.report-section {
+  background: var(--bg-page);
+  padding: 0 0 6px;
+}
+
+/* После блока 340px в макете — отступ 32px до заголовка */
+.report-section__spacer-top {
+  height: 32px;
+}
+
+.report-section__heading {
+  margin: 0;
+  padding: 0 16px 4px;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.report-section__body {
+  padding: 16px 16px 24px;
+}
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-list__item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.feature-list__icon {
+  flex-shrink: 0;
+  width: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 3px;
+}
+
+.feature-list__icon img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Три горизонтальные точки (как в макете), не растровый «more» из Figma */
+.feature-list__icon--more {
+  color: var(--text-secondary);
+}
+
+.feature-list__ellipsis {
+  display: block;
+  flex-shrink: 0;
+}
+
+.feature-list__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.feature-list__title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  color: var(--text-primary);
+}
+
+.feature-list__desc {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.feature-list__item--more {
+  align-items: flex-start;
+}
+
+.feature-list__more-text {
+  margin: 0;
+  flex: 1;
+  padding-top: 1px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--text-secondary);
+}
+
+.report-section__footer {
+  padding: 0 16px 6px;
+}
+
+.home-indicator {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 10px;
+  background: var(--bg-page);
+}
+
+.home-indicator__bar {
+  width: 134px;
+  height: 5px;
+  background: var(--text-primary);
+  border-radius: 3px;
+  opacity: 0.85;
+}
