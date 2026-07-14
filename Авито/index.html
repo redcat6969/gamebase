@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оценка экспресс</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <span class="role-route" id="managerRoleRoute" aria-hidden="true"></span>
+      <span class="role-route" id="buyerRoleRoute" aria-hidden="true"></span>
+      <main class="role-landing" id="roleLanding" aria-label="Выбор роли">
+        <a class="role-landing__choice" href="#managerRoleRoute" data-role="manager" onclick="activateRole('manager')">Я руководитель</a>
+        <a class="role-landing__choice" href="#buyerRoleRoute" data-role="buyer" onclick="activateRole('buyer')">Я байер</a>
+      </main>
+
+      <div class="prototype-app" id="prototypeApp">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="brand__text">
+            <strong>Автохаб</strong>
+            <span>проект Avito</span>
+          </div>
+        </div>
+
+        <div class="topbar__meta">
+          <span>ID: 5</span>
+          <button class="topbar__chip" type="button">Аксель</button>
+          <button class="topbar__chip" type="button">Иван Петров</button>
+          <button class="topbar__icon" type="button" aria-label="Календарь">
+            <span>◫</span>
+          </button>
+          <button class="topbar__icon" type="button" aria-label="Уведомления">
+            <span>◌</span>
+          </button>
+          <button class="topbar__icon" type="button" aria-label="Выход">
+            <span>↪</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <nav class="sidebar__nav" aria-label="Разделы">
+            <a class="sidebar__item" href="#">Новости</a>
+            <a class="sidebar__item" href="#">Рабочий стол</a>
+            <a class="sidebar__item" href="#">Отчёт руководителя</a>
+            <a class="sidebar__item" href="#">Ваша вовлечённость</a>
+            <a class="sidebar__item" href="#">Выкуп</a>
+            <a class="sidebar__item" href="#">Сделки</a>
+            <a class="sidebar__item" href="#">Склад</a>
+            <a class="sidebar__item" href="#">Авито Аукцион</a>
+            <a class="sidebar__item" href="#">Звонки</a>
+            <a class="sidebar__item" href="#">Маркетинг</a>
+            <a class="sidebar__item" href="#">Обработка трафика</a>
+            <a class="sidebar__item sidebar__item--active" href="#">Услуги и финансы</a>
+            <a class="sidebar__item" href="#">Сотрудники</a>
+            <a class="sidebar__item" href="#">Обучение</a>
+            <a class="sidebar__item" href="#">Настройки</a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__caption">Связь с нами</p>
+            <a class="sidebar__link" href="#">Вопрос в поддержку</a>
+            <a class="sidebar__link" href="#">Оценить Автохаб</a>
+
+            <div class="manager-card">
+              <div class="manager-card__avatar">ИИ</div>
+              <div>
+                <strong>Иван Иванов</strong>
+                <p>Ваш менеджер</p>
+                <a href="mailto:ivanov@avito.ru">ivanov@avito.ru</a>
+              </div>
+            </div>
+
+            <button class="sidebar__collapse" type="button">Свернуть</button>
+          </div>
+        </aside>
+
+        <main class="content">
+          <section class="page-header">
+            <a class="page-header__back" href="#">Назад</a>
+
+            <div class="page-header__head">
+              <div>
+                <h1>Volkswagen Polo V Рестайлинг, 2020</h1>
+                <p class="page-header__subtitle">
+                  WBAJY01050CG00801VIN • 208 CDI 2.3 MT (79 л.с.) • Техно • 25 739 км • Новая сделка •
+                  <a href="#">Объявление</a>
+                </p>
+              </div>
+
+              <div class="page-header__meta">
+                <span>Новая сделка</span>
+                <span>Оценщик Иванов Иван</span>
+                <span>ТП Демо-Компания</span>
+              </div>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Разделы сделки">
+              <button class="tabs__item" type="button" data-tab="description">Описание</button>
+              <button class="tabs__item" type="button" data-tab="autoteka">Автотека</button>
+              <button class="tabs__item tabs__item--active" type="button" data-tab="estimate">Оценка</button>
+              <button class="tabs__item" type="button" data-tab="market">Рынок</button>
+              <button class="tabs__item" type="button" data-tab="history">История</button>
+            </div>
+          </section>
+
+          <section class="calculator-layout" id="estimatePanel">
+            <article class="calculator-card">
+              <div class="market-overview">
+                <div class="market-overview__top">
+                  <article class="metric-card metric-card--stacked">
+                    <div>
+                      <p class="metric-card__label">Цена в объявлении</p>
+                      <strong class="metric-card__value">1 620 000 ₽ <span class="metric-card__accent">↑</span></strong>
+                    </div>
+                    <div class="metric-card metric-card--inner">
+                      <p class="metric-card__label">Авито Оценка <span class="hint">?</span></p>
+                      <strong class="metric-card__value">1 557 100 ₽</strong>
+                      <span class="metric-card__range">1 494 800 ₽ – 1 645 800 ₽</span>
+                    </div>
+                  </article>
+
+                  <article class="metric-card metric-card--wide">
+                    <p class="metric-card__label">ПЦП Автохаба</p>
+                    <strong class="metric-card__value">1 451 000 ₽ <span class="metric-card__caret">›</span></strong>
+                    <span class="metric-card__subtext">На основе проданных авто</span>
+                    <div class="metric-card__chips">
+                      <span class="chip">24 авто</span>
+                      <span class="chip">За год ⌄</span>
+                    </div>
+                  </article>
+
+                  <article class="metric-card metric-card--wide metric-card--action">
+                    <button class="metric-card__button" type="button">Уточнить цены ✦</button>
+                    <p class="metric-card__label">Цена на рынке</p>
+                    <strong class="metric-card__value">1 650 000 ₽ <span class="metric-card__caret">›</span></strong>
+                    <span class="metric-card__subtext">На основе авто в продаже</span>
+                    <div class="metric-card__chips">
+                      <span class="chip">5 авто</span>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="market-overview__bottom">
+                  <article class="status-card status-card--green">
+                    <p class="status-card__label">Ликвидность</p>
+                    <strong class="status-card__value">A</strong>
+                  </article>
+                  <article class="status-card">
+                    <p class="status-card__label">Срок продажи</p>
+                    <strong class="status-card__value"><span class="dot"></span>26 дней</strong>
+                  </article>
+                  <article class="status-card">
+                    <p class="status-card__label">Снято за<br />60 дней <span class="hint">?</span></p>
+                    <strong class="status-card__value"><span class="dot"></span>70% авто</strong>
+                  </article>
+                  <article class="status-card">
+                    <p class="status-card__label">Пробег <span class="hint">?</span></p>
+                    <strong class="status-card__value"><span class="dot"></span>25 739 км</strong>
+                  </article>
+                  <article class="status-card">
+                    <p class="status-card__label">История ДТП</p>
+                    <strong class="status-card__value"><span class="dot"></span>1 ДТП</strong>
+                  </article>
+                </div>
+              </div>
+
+              <div class="estimation">
+                <h2>Оценить авто</h2>
+
+                <div class="estimation__grid">
+                  <section class="calc-column">
+                    <div class="calc-column__head">
+                      <h3>Продажа</h3>
+                      <p class="calc-column__hint">В диапазоне Авито Оценки <span class="gauge"></span></p>
+                    </div>
+
+                    <label class="form-field">
+                      <span class="form-field__label">Цена продажи</span>
+                      <span class="form-field__control">
+                        <input id="salePrice" type="text" inputmode="numeric" value="1 557 100" />
+                        <em>₽</em>
+                      </span>
+                    </label>
+
+                    <div class="calc-inline calc-inline--dual">
+                      <label class="form-field">
+                        <span class="form-field__label">К рынку <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="10" />
+                          <em>%</em>
+                        </span>
+                      </label>
+
+                      <label class="form-field">
+                        <span class="form-field__label">К ПЦП Автохаб <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="10" />
+                          <em>%</em>
+                        </span>
+                      </label>
+                    </div>
+
+                    <div class="calc-inline calc-inline--dual">
+                      <label class="form-field">
+                        <span class="form-field__label">Срок продажи <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="26" />
+                          <em>дней</em>
+                        </span>
+                      </label>
+
+                      <label class="form-field">
+                        <span class="form-field__label">Рейтинг цены <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="2 из 87" />
+                        </span>
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="calc-column">
+                    <div class="calc-column__head">
+                      <h3>Прибыль</h3>
+                      <p class="calc-column__hint">Железная маржа GM1</p>
+                    </div>
+
+                    <label class="form-field">
+                      <span class="form-field__label">В рублях</span>
+                      <span class="form-field__control">
+                        <input id="marginAmount" type="text" inputmode="numeric" value="155 710" />
+                        <em>₽</em>
+                      </span>
+                    </label>
+
+                    <label class="form-field">
+                      <span class="form-field__label">В процентах</span>
+                      <span class="form-field__control">
+                        <input id="marginPercent" type="text" inputmode="decimal" value="10" />
+                        <em>%</em>
+                      </span>
+                    </label>
+                  </section>
+
+                  <section class="calc-column">
+                    <div class="calc-column__head">
+                      <h3>Общие затраты</h3>
+                      <p class="calc-column__hint calc-column__hint--value" id="totalCost">1 416 390 ₽</p>
+                    </div>
+
+                    <label class="form-field">
+                      <span class="form-field__label">Цена выкупа</span>
+                      <span class="form-field__control form-field__control--computed">
+                        <input id="purchasePrice" type="text" inputmode="numeric" value="1 401 390" />
+                        <em>₽</em>
+                      </span>
+                    </label>
+
+                    <div class="calc-inline calc-inline--dual">
+                      <label class="form-field">
+                        <span class="form-field__label">К рынку <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="10" />
+                          <em>%</em>
+                        </span>
+                      </label>
+
+                      <label class="form-field">
+                        <span class="form-field__label">К ПЦП Автохаб <span class="hint">i</span></span>
+                        <span class="form-field__control">
+                          <input type="text" value="10" />
+                          <em>%</em>
+                        </span>
+                      </label>
+                    </div>
+
+                    <label class="form-field">
+                      <span class="form-field__label">Подготовка</span>
+                      <span class="form-field__control">
+                        <input id="prepCost" type="text" inputmode="numeric" value="15 000" />
+                      </span>
+                    </label>
+
+                    <p class="form-note">Подготовка из осмотра</p>
+                    <p class="form-link">20 000 – 40 000 ₽</p>
+                  </section>
+                </div>
+              </div>
+            </article>
+
+            <aside class="history-card" id="approvalWidget">
+              <div class="history-card__header" id="approvalWidgetHeader" hidden>
+                <h3 id="approvalWidgetHeaderTitle">Ожидает согласования</h3>
+                <p>12 января 2026, Иван Иванов</p>
+              </div>
+
+              <div class="history-card__title" id="approvalWidgetTitle">
+                <h3>Сохранить оценку</h3>
+              </div>
+
+              <dl class="history-card__stats">
+                <div>
+                  <dt>Цена выкупа</dt>
+                  <dd id="widgetPurchasePrice">1 401 390 ₽</dd>
+                </div>
+                <div>
+                  <dt>Маржа GM1</dt>
+                  <dd id="widgetMarginAmount">155 710 ₽</dd>
+                </div>
+                <div>
+                  <dt>Цена продажи</dt>
+                  <dd id="widgetSalePrice">1 557 100 ₽</dd>
+                </div>
+              </dl>
+
+              <label class="history-card__comment">
+                <textarea rows="4" placeholder="Комментарий"></textarea>
+              </label>
+
+              <button class="history-card__button history-card__button--primary" type="button" id="sendForApprovalButton">Отправить на согласование</button>
+              <button class="history-card__button history-card__button--ghost" type="button" id="secondaryWidgetButton">Сохранить без согласования</button>
+            </aside>
+          </section>
+
+          <section class="market-layout" id="marketPanel" hidden aria-label="Рынок">
+            <div class="market-content">
+              <div class="market-filters">
+                <div class="market-segment" role="group" aria-label="Область поиска">
+                  <button class="market-segment__item market-segment__item--active" type="button">Весь рынок</button>
+                  <button class="market-segment__item" type="button">Этот салон</button>
+                  <button class="market-segment__item" type="button">Все салоны холдинга</button>
+                </div>
+
+                <div class="market-filter-grid">
+                  <button class="market-filter market-filter--primary" type="button">☷&nbsp; Все фильтры</button>
+                  <button class="market-filter" type="button">Актуальные объявления <span>⌄</span></button>
+                  <button class="market-filter market-filter--range" type="button"><span>От 2020</span><i></i><span>До 2022</span></button>
+                  <button class="market-filter" type="button">По региону <span>⌄</span></button>
+                  <button class="market-filter" type="button">Воронежская обл. <span>⌄</span></button>
+                  <button class="market-filter" type="button">Воронеж <span>⌄</span></button>
+                  <button class="market-filter" type="button">300 <em>км</em></button>
+                  <button class="market-filter" type="button">Продавец <span>⌄</span></button>
+                </div>
+              </div>
+
+              <div class="market-results">
+                <div class="market-results__heading">
+                  <h2 id="marketResultsTitle">6 авто на рынке</h2>
+                  <div class="market-results__actions">
+                    <button type="button">⇄&nbsp; Сначала дешевле</button>
+                    <button type="button" id="marketChartToggle" aria-pressed="false">▥&nbsp; График</button>
+                    <button type="button">◉&nbsp; Убрать скрытые</button>
+                  </div>
+                </div>
+
+                <div class="market-stats">
+                  <article><span>Средний срок продажи</span><strong>22 дня</strong></article>
+                  <article><span>ПЦП Автохаба <b>?</b></span><strong>1 451 000 ₽</strong></article>
+                  <article><span>Продано за 60 дней</span><strong>25 из 115 авто</strong></article>
+                  <article><span>Средний пробег <b>?</b></span><strong>130 000 км</strong></article>
+                </div>
+
+                <div class="market-list" aria-label="Объявления на рынке">
+                  <article class="market-row">
+                    <div class="market-row__photo"><img src="./assets/polo-1.jpg" alt="Volkswagen Polo VI, 2020" /><time>3 апреля 2026</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2020 <i class="market-row__signal market-row__signal--good">✓</i></h3><p>127 000 км, 1.6 AT, передний, Base,<br />2 владельца</p><span class="market-row__location">Москва, частник</span><span class="market-row__badge market-row__badge--verified">Цена проверена</span></div>
+                    <div class="market-row__price"><strong>1 300 000 ₽ <em>↑</em></strong><span>Рейтинг цены: <b>1 из 12</b></span></div>
+                    <div class="market-row__sites"><strong>12 дней</strong><span>Авито</span></div>
+                    <button class="market-row__hide" type="button" aria-label="Скрыть объявление"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5 17.5 17.5M8.1 5.3A8.8 8.8 0 0 1 10 5c4.2 0 7.1 3.5 7.8 5-0.4 0.8-1.4 2.1-2.9 3.2M11.9 14.7A8.8 8.8 0 0 1 10 15c-4.2 0-7.1-3.5-7.8-5 0.5-1 1.7-2.5 3.5-3.5M12.2 12.2A3 3 0 0 1 7.8 7.8" /></svg></button>
+                  </article>
+                  <article class="market-row">
+                    <div class="market-row__photo"><img src="./assets/polo-2.jpg" alt="Volkswagen Polo VI, 2021" /><time>6 февраля 2026</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2021 <i class="market-row__signal market-row__signal--alert">!</i></h3><p>168 000 км, 1.6 AT, передний, LE<br />Base, 1 владелец</p><span class="market-row__location">Москва, салон</span></div>
+                    <div class="market-row__price"><strong>1 579 000 ₽ <em class="market-row__down">↓</em></strong><span>Рейтинг цены: <b>2 из 12</b></span></div>
+                    <div class="market-row__sites"><strong>41 день</strong><span>Авито<br />Авто.ру</span></div>
+                    <button class="market-row__hide" type="button" aria-label="Скрыть объявление"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5 17.5 17.5M8.1 5.3A8.8 8.8 0 0 1 10 5c4.2 0 7.1 3.5 7.8 5-0.4 0.8-1.4 2.1-2.9 3.2M11.9 14.7A8.8 8.8 0 0 1 10 15c-4.2 0-7.1-3.5-7.8-5 0.5-1 1.7-2.5 3.5-3.5M12.2 12.2A3 3 0 0 1 7.8 7.8" /></svg></button>
+                  </article>
+                  <article class="market-row">
+                    <div class="market-row__photo"><img src="./assets/polo-3.jpg" alt="Volkswagen Polo V, 2020" /><time>25 декабря 2025</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2020</h3><p>110 000 км, 1.6 AT, передний,<br />5 владельцев</p><span class="market-row__location">Москва, салон</span></div>
+                    <div class="market-row__price"><strong>1 700 000 ₽ <em class="market-row__down">↓</em></strong><span>Рейтинг цены: <b>2 из 12</b></span></div>
+                    <div class="market-row__sites"><strong>79 дней</strong><span>Авито<br />Дром</span></div>
+                    <button class="market-row__hide" type="button" aria-label="Скрыть объявление"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5 17.5 17.5M8.1 5.3A8.8 8.8 0 0 1 10 5c4.2 0 7.1 3.5 7.8 5-0.4 0.8-1.4 2.1-2.9 3.2M11.9 14.7A8.8 8.8 0 0 1 10 15c-4.2 0-7.1-3.5-7.8-5 0.5-1 1.7-2.5 3.5-3.5M12.2 12.2A3 3 0 0 1 7.8 7.8" /></svg></button>
+                  </article>
+                  <article class="market-row">
+                    <div class="market-row__photo"><img src="./assets/polo-4.jpg" alt="Volkswagen Polo V, 2022" /><time>28 января 2026</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2022 <i class="market-row__signal market-row__signal--alert">!</i></h3><p>124 000 км, 1.6 AT, передний,<br />3 владельца</p><span class="market-row__location">Москва, частник</span><span class="market-row__badge market-row__badge--verified">Цена проверена</span></div>
+                    <div class="market-row__price"><strong>1 220 000 ₽ <em class="market-row__down">↓</em></strong><span>Рейтинг цены: <b>2 из 12</b></span></div>
+                    <div class="market-row__sites"><strong>35 дней</strong><span>Авито</span></div>
+                    <button class="market-row__hide" type="button" aria-label="Скрыть объявление"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5 17.5 17.5M8.1 5.3A8.8 8.8 0 0 1 10 5c4.2 0 7.1 3.5 7.8 5-0.4 0.8-1.4 2.1-2.9 3.2M11.9 14.7A8.8 8.8 0 0 1 10 15c-4.2 0-7.1-3.5-7.8-5 0.5-1 1.7-2.5 3.5-3.5M12.2 12.2A3 3 0 0 1 7.8 7.8" /></svg></button>
+                  </article>
+                  <article class="market-row">
+                    <div class="market-row__photo"><img src="./assets/polo-5.jpg" alt="Volkswagen Polo V, 2021" /><time>11 апреля 2026</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2021 <i class="market-row__signal market-row__signal--alert">!</i></h3><p>297 996 км, 1.6 AT, передний,<br />4 владельца</p><span class="market-row__location">Москва, частник</span></div>
+                    <div class="market-row__price"><strong>1 599 000 ₽ <em class="market-row__down">↓</em></strong><span>Рейтинг цены: <b>2 из 12</b></span></div>
+                    <div class="market-row__sites"><strong>17 дней</strong><span>Авито</span></div>
+                    <button class="market-row__hide" type="button" aria-label="Скрыть объявление"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5 17.5 17.5M8.1 5.3A8.8 8.8 0 0 1 10 5c4.2 0 7.1 3.5 7.8 5-0.4 0.8-1.4 2.1-2.9 3.2M11.9 14.7A8.8 8.8 0 0 1 10 15c-4.2 0-7.1-3.5-7.8-5 0.5-1 1.7-2.5 3.5-3.5M12.2 12.2A3 3 0 0 1 7.8 7.8" /></svg></button>
+                  </article>
+                  <article class="market-row market-row--compare">
+                    <div class="market-row__photo"><img src="./assets/polo-6.jpg" alt="Volkswagen Polo VI, 2020" /><time>23 февраля 2026</time></div>
+                    <div class="market-row__main"><h3>Polo VI, 2020</h3><p>25 345 км, 1.4 AMT (125 л.с.)</p><span class="market-row__comparison">Это авто вы сравниваете</span></div>
+                    <div class="market-row__price"><strong>1 620 000 ₽ <em>↑</em></strong><span>Рейтинг цены: 2 из 12</span><span>Оценщик: <b>1 978 000 ₽</b></span></div>
+                    <div class="market-row__sites"><strong>125 дней</strong><span>Авито<br />Авто.ру<br />Дром</span></div>
+                  </article>
+                </div>
+
+                <section class="market-chart" id="marketChart" hidden aria-label="График рынка">
+                  <div class="market-chart__plot">
+                    <div class="market-chart__y-axis" aria-hidden="true">
+                      <span>1,3 млн ₽</span><span>1,2 млн ₽</span><span>900 т. ₽</span>
+                      <span>700 т. ₽</span><span>600 т. ₽</span><span>500 т. ₽</span>
+                    </div>
+                    <div class="market-chart__canvas" aria-label="Соотношение цены и пробега объявлений">
+                      <span class="market-chart__line market-chart__line--horizontal"></span>
+                      <span class="market-chart__line market-chart__line--vertical"></span>
+                      <span class="market-chart__trend" aria-hidden="true"></span>
+                      <button class="market-chart__point market-chart__point--private market-chart__point--rose" type="button" style="--x: 27%; --y: 11%"></button>
+                      <button class="market-chart__point market-chart__point--professional market-chart__point--rose" type="button" style="--x: 53%; --y: 20%"></button>
+                      <button class="market-chart__point market-chart__point--holding market-chart__point--blue" type="button" style="--x: 72%; --y: 67%"></button>
+                      <button class="market-chart__point market-chart__point--private market-chart__point--green" type="button" style="--x: 18%; --y: 67%"></button>
+                      <button class="market-chart__point market-chart__point--professional market-chart__point--green" type="button" style="--x: 60%; --y: 81%"></button>
+                      <button class="market-chart__point market-chart__point--subject" type="button" style="--x: 40%; --y: 54%"></button>
+                      <div class="market-chart__tooltip" id="marketChartTooltip" role="status" aria-hidden="true"><strong></strong><span></span></div>
+                    </div>
+                    <div class="market-chart__x-axis" aria-hidden="true">
+                      <span>25 т. км</span><span>50 т. км</span><span>100 т. км</span>
+                      <span>150 т. км</span><span>200 т. км</span><span>225 т. км</span>
+                    </div>
+                    <article class="market-chart__selected">
+                      <div class="market-chart__selected-photo"><img id="marketSelectedImage" src="./assets/polo-1.jpg" alt="Polo VI, 2020" /><time id="marketSelectedDate">3 апреля 2026</time></div>
+                      <h3 id="marketSelectedPrice">2 800 000 ₽ <em>↑</em></h3>
+                      <strong id="marketSelectedDays">12 дней</strong>
+                      <p id="marketSelectedSites">Авито</p>
+                      <span id="marketSelectedRating">Рейтинг 1 из 12</span>
+                      <p id="marketSelectedYear">2020, 127 000 км</p><p id="marketSelectedSpec">1.6 AT, передний, Base</p><p id="marketSelectedOwners">2 владельца</p><p id="marketSelectedSeller">Частник</p><p id="marketSelectedCity">Москва</p>
+                    </article>
+                  </div>
+                  <div class="market-chart__legend" aria-label="Легенда графика">
+                    <span><i class="market-chart__legend-mark market-chart__legend-mark--subject"></i>Оцениваемое</span>
+                    <span><i class="market-chart__legend-mark market-chart__legend-mark--private"></i>Частник</span>
+                    <span><i class="market-chart__legend-mark market-chart__legend-mark--professional"></i>Профессионал</span>
+                    <span><i class="market-chart__legend-mark market-chart__legend-mark--holding"></i>Наш холдинг</span>
+                    <span><i class="market-chart__legend-mark market-chart__legend-mark--hidden"></i>Скрыто</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <aside class="stock-card market-summary-card" aria-label="Параметры оценки">
+              <div class="market-summary-card__controls">
+                <label class="market-summary-card__field">
+                  <span>Цена продажи</span>
+                  <span class="market-summary-card__input"><input type="text" value="4 500 000" aria-label="Цена продажи" /><em>₽</em></span>
+                </label>
+                <label class="market-summary-card__field market-summary-card__field--percent">
+                  <span>От рынка <i>i</i></span>
+                  <span class="market-summary-card__input"><input type="text" value="102" aria-label="Процент от рынка" /><em>%</em><b aria-hidden="true">⌃<br />⌄</b></span>
+                </label>
+              </div>
+              <div class="market-summary-card__rows">
+                <p>V-рейтинг: <strong>10 из 21</strong></p>
+                <p>Затраты: <strong>405 000 ₽</strong></p>
+                <p>Маржа (GM1): <strong>45 000 ₽ (10%)</strong></p>
+              </div>
+              <button class="market-summary-card__button" type="button">К оценке</button>
+            </aside>
+          </section>
+        </main>
+      </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+      function activateRole(role) {
+        if (window.showPrototypeForRole) {
+          window.showPrototypeForRole(role);
+          return;
+        }
+
+        const isManager = role === "manager";
+        const landing = document.querySelector("#roleLanding");
+        const app = document.querySelector("#prototypeApp");
+        const widget = document.querySelector("#approvalWidget");
+        const widgetHeader = document.querySelector("#approvalWidgetHeader");
+        const primaryButton = document.querySelector("#sendForApprovalButton");
+        const secondaryButton = document.querySelector("#secondaryWidgetButton");
+
+        landing.hidden = true;
+        landing.style.display = "none";
+        app.hidden = false;
+        app.classList.add("prototype-app--visible");
+        widget.dataset.role = role;
+        widget.classList.toggle("history-card--pending", isManager);
+        widget.classList.remove("history-card--approved");
+        widgetHeader.hidden = !isManager;
+        widgetHeader.querySelector("h3").textContent = "Ожидает согласования";
+        primaryButton.textContent = isManager ? "Согласовать оценку" : "Отправить на согласование";
+        secondaryButton.textContent = isManager ? "Отправить на доработку" : "Сохранить без согласования";
+
+        if (isManager) {
+          document.querySelectorAll(".tabs__item").forEach((tab) => {
+            tab.classList.toggle("tabs__item--active", tab.dataset.tab === "estimate");
+          });
+          document.querySelector("#estimatePanel").hidden = false;
+          document.querySelector("#marketPanel").hidden = true;
+        }
+      }
+    </script>
+  </body>
+</html>
